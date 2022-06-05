@@ -3,30 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentImageThree">
+    tools:context=".FeaturedImageFragment">
 
     <ImageView
-        android:id="@+id/iv_image_three"
+        android:id="@+id/iv_img_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:contentDescription="@string/img_description"
+        android:scaleType="centerCrop" />
+
     <TextView
-        android:id="@+id/name_fragment_three"
+        android:id="@+id/tv_name_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:paddingStart="10dp"
         android:layout_marginBottom="30dp"
+        android:paddingStart="10dp"
         android:textSize="17sp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        tools:ignore="RtlSymmetry" />
 
     <TextView
-        android:id="@+id/street_fragment_three"
+        android:id="@+id/tv_address_fragment"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_gravity="bottom"
         android:paddingStart="10dp"
         android:textColor="@color/white"
-        android:textSize="17sp"/>
+        android:textSize="17sp"
+        tools:ignore="RtlSymmetry" />
 
 </FrameLayout>

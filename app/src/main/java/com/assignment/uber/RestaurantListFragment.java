@@ -1,6 +1,5 @@
 package com.assignment.uber;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -17,7 +16,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class RestaurantsFragment extends Fragment {
+public class RestaurantListFragment extends Fragment {
     ArrayList<Restaurant> restaurants;
     View v;
     ListView menuList;
@@ -26,7 +25,7 @@ public class RestaurantsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_menu, container, false);
+        v = inflater.inflate(R.layout.fragment_restaurant_list, container, false);
         setHasOptionsMenu(true);
         menuList = v.findViewById(R.id.menu_list);
         restaurants = DataSource.getInstance().getRestaurantList();
@@ -37,7 +36,7 @@ public class RestaurantsFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         // Do something that differs the Activity's menu here
         super.onCreateOptionsMenu(menu, inflater);
     }

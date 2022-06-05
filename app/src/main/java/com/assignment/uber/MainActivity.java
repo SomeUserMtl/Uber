@@ -17,22 +17,25 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        featuredFragment();
-        menuFragment();
+        featuredImageFragment();
+        RestaurantListFragment();
 
         binding.dots.setupWithViewPager(binding.featuredFragmentContainer);
     }
 
-    private void featuredFragment() {
+    private void featuredImageFragment() {
         FeaturedImageAdapter adapter = new FeaturedImageAdapter(
                 getSupportFragmentManager(),
-                new FeaturedRestaurants().getFeaturedFragments());
+                DataSource.getInstance().getRandomFeaturedList());
         binding.featuredFragmentContainer.setAdapter(adapter);
     }
 
-    private void menuFragment() {
-        Fragment fragment = new RestaurantsFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.menu_fragment_container, fragment).commit();
+    private void RestaurantListFragment() {
+        Fragment fragment = new RestaurantListFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.menu_fragment_container, fragment)
+                .commit();
     }
 
     @Override
