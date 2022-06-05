@@ -17,6 +17,7 @@ public class FragmentImageThree extends Fragment {
         View v = inflater.inflate(R.layout.fragment_image_three, container, false);
 
         if(getArguments() != null){
+            try{
             int img = getArguments().getInt("2");
             String name = getArguments().getString("22");
             String address = getArguments().getString("222");
@@ -28,6 +29,10 @@ public class FragmentImageThree extends Fragment {
             imgView.setImageResource(img);
             tv_name.setText(name);
             tv_address.setText(address);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
         return v;

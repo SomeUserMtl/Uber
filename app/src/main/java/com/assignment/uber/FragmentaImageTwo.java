@@ -18,17 +18,22 @@ public class FragmentaImageTwo extends Fragment {
         View v = inflater.inflate(R.layout.fragment_image_two, container, false);
 
         if(getArguments() != null){
-            int img = getArguments().getInt("1");
-            String name = getArguments().getString("11");
-            String address = getArguments().getString("111");
+            try{
+                int img = getArguments().getInt("1");
+                String name = getArguments().getString("11");
+                String address = getArguments().getString("111");
 
-            ImageView imgView = v.findViewById(R.id.iv_image_two);
-            TextView tv_name = v.findViewById(R.id.name_fragment_two);
-            TextView tv_address = v.findViewById(R.id.street_fragment_two);
+                ImageView imgView = v.findViewById(R.id.iv_image_two);
+                TextView tv_name = v.findViewById(R.id.name_fragment_two);
+                TextView tv_address = v.findViewById(R.id.street_fragment_two);
 
-            imgView.setImageResource(img);
-            tv_name.setText(name);
-            tv_address.setText(address);
+                imgView.setImageResource(img);
+                tv_name.setText(name);
+                tv_address.setText(address);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
         }
         return v;
     }

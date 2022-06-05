@@ -45,13 +45,17 @@ public class RestaurantListAdapter extends BaseAdapter {
 
             //name
             TextView tv_name = v.findViewById(R.id.tv_name);
-            if (tv_name != null)
-                tv_name.setText(data.get(i).getName() + ",");
+            if (tv_name != null) {
+                String name = data.get(i).getName() + ",";
+                tv_name.setText(name);
+            }
 
             //street
             TextView tv_street = v.findViewById(R.id.tv_street);
-            if (tv_street != null)
-                tv_street.setText(data.get(i).getAddress1() + ",");
+            if (tv_street != null){
+                String street = data.get(i).getAddress1() + ",";
+                tv_street.setText(street);
+            }
 
             //city
             TextView tv_city = v.findViewById(R.id.tv_city);
@@ -60,11 +64,10 @@ public class RestaurantListAdapter extends BaseAdapter {
 
             //delivery fee
             TextView tv_delivery_fee = v.findViewById(R.id.tv_delivery_fee);
-            TextView tv_delivery_fee_label = v.findViewById(R.id.tv_delivery_fee_label);
-            if (tv_delivery_fee != null)
-                tv_delivery_fee.setText("$" + data.get(i).getDeliveryFee());
-            else
-                tv_delivery_fee_label.setText("");
+            if (tv_delivery_fee != null) {
+                String minPrice = "$" + data.get(i).getMinPrice() + " Minimum Price";
+                tv_delivery_fee.setText(minPrice);
+            }
 
             //rating
             TextView tv_rating = v.findViewById(R.id.tv_rating);
@@ -73,8 +76,10 @@ public class RestaurantListAdapter extends BaseAdapter {
 
             //delivery time
             TextView tv_delivery_time = v.findViewById(R.id.tv_delivery_time);
-            if (tv_delivery_time != null)
-                tv_delivery_time.setText(data.get(i).getDeliveryTime());
+            if (tv_delivery_time != null) {
+                String deliveryTime = data.get(i).getDeliveryTime() + " min";
+                tv_delivery_time.setText(deliveryTime);
+            }
 
             //vegan
             TextView tv_vegan = v.findViewById(R.id.tv_vegan_icon);

@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="417dp"
+        android:layout_width="480dp"
         android:layout_height="160dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/restaurant_image"
@@ -29,7 +29,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/tv_street"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imageView"
         app:layout_constraintTop_toTopOf="@+id/tv_city" />
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_marginStart="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/tv_street">
 
         <TextView
@@ -94,7 +94,7 @@
         android:background="@drawable/ratings_bkg"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
