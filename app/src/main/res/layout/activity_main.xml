@@ -10,7 +10,7 @@
     <FrameLayout
         android:id="@+id/pager_container"
         android:layout_width="match_parent"
-        android:layout_height="190dp">
+        android:layout_height="185dp">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/featured_fragment_container"

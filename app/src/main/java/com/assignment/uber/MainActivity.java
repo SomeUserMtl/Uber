@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         int fragmentAmt = 3;
         int size = Sort.sortByFeatured().size();
 
-        if (fragmentAmt > size)
+        if (fragmentAmt < size)
             size = fragmentAmt;
 
         for (int i = 0; i < size; i++) {
