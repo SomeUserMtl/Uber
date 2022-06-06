@@ -6,6 +6,8 @@ public class Sort {
 
     private static final ArrayList<Restaurant> restaurants
             = DataSource.getInstance().getRestaurantList();
+    private static final ArrayList<Restaurant> featuredList = new ArrayList<>();
+    private static boolean sorted;
 
     public static void sortByLowPrice() {
         //insertion sort
@@ -57,12 +59,14 @@ public class Sort {
     }
 
     public static ArrayList<Restaurant> sortByFeatured() {
-        ArrayList<Restaurant> featuredList = new ArrayList<>();
-        for (Restaurant restaurant : restaurants) {
-            if (restaurant.isFeatured())
-                featuredList.add(restaurant);
+        if (!sorted) {
+            for (Restaurant restaurant : restaurants) {
+                if (restaurant.isFeatured())
+                    featuredList.add(restaurant);
+            }
+            Collections.shuffle(featuredList);
+            sorted = true;
         }
-        Collections.shuffle(featuredList);
         return featuredList;
     }
 }

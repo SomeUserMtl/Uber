@@ -1,7 +1,5 @@
 package com.assignment.uber;
 
-import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -10,25 +8,21 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 public class FeaturedImageAdapter extends FragmentPagerAdapter {
-    ArrayList<Restaurant> restaurants;
+    ArrayList<Fragment> fragments;
 
-    public FeaturedImageAdapter(FragmentManager fm, ArrayList<Restaurant> restaurants) {
+    public FeaturedImageAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
         super(fm);
-        this.restaurants = restaurants;
+        this.fragments = fragments;
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        FeaturedImageFragment fragment = new FeaturedImageFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt("key", position);
-        fragment.setArguments(bundle);
-        return fragment;
+        return fragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return fragments.size();
     }
 }

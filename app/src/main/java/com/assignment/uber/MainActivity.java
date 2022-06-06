@@ -7,6 +7,8 @@ import android.view.Menu;
 
 import com.assignment.uber.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
@@ -22,9 +24,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void featuredImageFragment() {
-        FeaturedImageAdapter adapter = new FeaturedImageAdapter(
-                getSupportFragmentManager(),
-                Sort.sortByFeatured());
+
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        int fragmentAmt = 3;
+        int size = Sort.sortByFeatured().size();
+
+        if (fragmentAmt > size)
+            size = fragmentAmt;
+
+        for (int i = 0; i < size; i++) {
+            FeaturedImageFragment fragment = new FeaturedImageFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("key", i);
+            fragment.setArguments(bundle);
+            fragments.add(fragment);
+        }
+        FeaturedImageAdapter adapter =
+                new FeaturedImageAdapter(getSupportFragmentManager(), fragments);
         binding.featuredFragmentContainer.setAdapter(adapter);
     }
 

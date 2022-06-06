@@ -15,6 +15,8 @@ public class DataSource {
     }
 
     private ArrayList<Restaurant> setUpMockData() {
+        if (restaurantData != null)
+            return restaurantData;
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
 
         Restaurant restaurant1 = new Restaurant();
