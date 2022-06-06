@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 public class FeaturedImageFragment extends Fragment {
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -21,7 +20,7 @@ public class FeaturedImageFragment extends Fragment {
 
         if(getArguments() != null){
             int index = getArguments().getInt("key");
-            Restaurant restaurant = DataSource.getInstance().getRestaurant(index);
+            Restaurant restaurant = Sort.sortByFeatured().get(index);
 
                 ImageView imgView = v.findViewById(R.id.iv_img_fragment);
                 TextView tv_name = v.findViewById(R.id.tv_name_fragment);

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -20,54 +22,48 @@ public class RestaurantListFragment extends Fragment {
     ArrayList<Restaurant> restaurants;
     View v;
     ListView menuList;
-    Context m_context;
+    Context context;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
+
         v = inflater.inflate(R.layout.fragment_restaurant_list, container, false);
         setHasOptionsMenu(true);
         menuList = v.findViewById(R.id.menu_list);
         restaurants = DataSource.getInstance().getRestaurantList();
-        m_context = inflater.getContext();
+        context = inflater.getContext();
 
-        populateRestaurantList(restaurants);
+        populateData(restaurants);
         return v;
     }
 
     @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        // Do something that differs the Activity's menu here
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.price_low_to_high:
-                Sort.sortByLowPrice(restaurants);
-                populateRestaurantList(restaurants);
+        switch (item.getTitle().toString()) {
+            case "Price - Low to high":
+                Sort.sortByLowPrice();
+                populateData(restaurants);
                 return true;
-            case R.id.price_high_to_low:
-                Sort.sortByHighPrice(restaurants);
-                populateRestaurantList(restaurants);
+            case "Price - High to low":
+                Sort.sortByHighPrice();
+                populateData(restaurants);
                 return true;
-            case R.id.m_sort_rating:
-                Sort.sortByRating(restaurants);
-                populateRestaurantList(restaurants);
+            case "Rating":
+                Sort.sortByRating();
+                populateData(restaurants);
                 return true;
-            case R.id.m_sort_vegan:
-                populateRestaurantList(Sort.sortByVegan(restaurants));
+            case "Vegan":
+                populateData(Sort.sortByVegan());
                 return true;
-            default:
-                break;
         }
         return false;
     }
 
-    private void populateRestaurantList(ArrayList<Restaurant> restaurants) {
+    private void populateData(ArrayList<Restaurant> restaurants) {
         menuList.setAdapter(null);
-        RestaurantListAdapter adapter = new RestaurantListAdapter(m_context, restaurants);
+        RestaurantListAdapter adapter = new RestaurantListAdapter(context, restaurants);
         menuList.setAdapter(adapter);
     }
 }

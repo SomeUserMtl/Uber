@@ -1,9 +1,13 @@
 package com.assignment.uber;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Sort {
-    public static void sortByLowPrice(ArrayList<Restaurant> restaurants) {
 
+    private static final ArrayList<Restaurant> restaurants
+            = DataSource.getInstance().getRestaurantList();
+
+    public static void sortByLowPrice() {
         //insertion sort
         for (int i = 1; i < restaurants.size(); i++) {
             Restaurant key = restaurants.get(i);
@@ -16,7 +20,7 @@ public class Sort {
         }
     }
 
-    public static void sortByHighPrice(ArrayList<Restaurant> restaurants) {
+    public static void sortByHighPrice() {
         //insertion sort
         for (int i = 1; i < restaurants.size(); i++) {
             Restaurant key = restaurants.get(i);
@@ -29,7 +33,7 @@ public class Sort {
         }
     }
 
-    public static void sortByRating(ArrayList<Restaurant> restaurants) {
+    public static void sortByRating() {
         //insertion sort
         for (int i = 1; i < restaurants.size(); i++) {
             Restaurant key = restaurants.get(i);
@@ -42,8 +46,7 @@ public class Sort {
         }
     }
 
-    public static ArrayList<Restaurant> sortByVegan(ArrayList<Restaurant> restaurants) {
-        //create new array of only vegan restaurants
+    public static ArrayList<Restaurant> sortByVegan() {
         ArrayList<Restaurant> veganRestaurants = new ArrayList<>();
         for (Restaurant restaurant : restaurants) {
             if (restaurant.isVegetarian()) {
@@ -51,5 +54,15 @@ public class Sort {
             }
         }
         return veganRestaurants;
+    }
+
+    public static ArrayList<Restaurant> sortByFeatured() {
+        ArrayList<Restaurant> featuredList = new ArrayList<>();
+        for (Restaurant restaurant : restaurants) {
+            if (restaurant.isFeatured())
+                featuredList.add(restaurant);
+        }
+        Collections.shuffle(featuredList);
+        return featuredList;
     }
 }

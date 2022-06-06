@@ -2,31 +2,29 @@ package com.assignment.uber;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import android.os.Bundle;
 import android.view.Menu;
 
 import com.assignment.uber.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.dots.setupWithViewPager(binding.featuredFragmentContainer);
 
         featuredImageFragment();
         RestaurantListFragment();
-
-        binding.dots.setupWithViewPager(binding.featuredFragmentContainer);
     }
 
     private void featuredImageFragment() {
         FeaturedImageAdapter adapter = new FeaturedImageAdapter(
                 getSupportFragmentManager(),
-                DataSource.getInstance().getRandomFeaturedList());
+                Sort.sortByFeatured());
         binding.featuredFragmentContainer.setAdapter(adapter);
     }
 

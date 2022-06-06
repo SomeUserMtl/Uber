@@ -1,15 +1,12 @@
 package com.assignment.uber;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.UUID;
 
 public class DataSource {
 
-    private ArrayList<Restaurant> restaurantData = setUpMockData();
+    private final ArrayList<Restaurant> restaurantData = setUpMockData();
     private static DataSource instance;
-    private ArrayList<Restaurant> featuredRestaurants = setUpFeaturedData();
 
     public static DataSource getInstance() {
         if(instance == null)
@@ -17,7 +14,7 @@ public class DataSource {
         return instance;
     }
 
-    private static ArrayList<Restaurant> setUpMockData() {
+    private ArrayList<Restaurant> setUpMockData() {
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
 
         Restaurant restaurant1 = new Restaurant();
@@ -172,26 +169,8 @@ public class DataSource {
         return restaurantList;
     }
 
-    private ArrayList<Restaurant> setUpFeaturedData() {
-        ArrayList<Restaurant> featuredList = new ArrayList<>();
-        for (Restaurant restaurant : restaurantData) {
-            if (restaurant.isFeatured())
-                featuredList.add(restaurant);
-        }
-        return featuredList;
-    }
-
     public ArrayList<Restaurant> getRestaurantList() {
         return restaurantData;
-    }
-
-    public ArrayList<Restaurant> getRandomFeaturedList() {
-        Collections.shuffle(featuredRestaurants);
-        return featuredRestaurants;
-    }
-
-    public Restaurant getRestaurant(int index) {
-        return featuredRestaurants.get(index);
     }
 
 }
