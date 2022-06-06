@@ -42,6 +42,11 @@ public class RestaurantListAdapter extends BaseAdapter {
             ImageView iv_banner = v.findViewById(R.id.imageView);
             if (iv_banner != null)
                 iv_banner.setImageResource(data.get(i).getBannerImage());
+            if (i == 0) {
+                ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) Objects.requireNonNull(iv_banner).getLayoutParams();
+                marginParams.setMargins(10, 0, 10, 10);
+            }
+
 
             //name
             TextView tv_name = v.findViewById(R.id.tv_name);
@@ -65,7 +70,7 @@ public class RestaurantListAdapter extends BaseAdapter {
             //delivery fee
             TextView tv_delivery_fee = v.findViewById(R.id.tv_delivery_fee);
             if (tv_delivery_fee != null) {
-                String minPrice = "$" + data.get(i).getMinPrice() + " Minimum Price";
+                String minPrice = "$" + data.get(i).getMinPrice() + " Minimum Price -";
                 tv_delivery_fee.setText(minPrice);
             }
 
@@ -77,7 +82,7 @@ public class RestaurantListAdapter extends BaseAdapter {
             //delivery time
             TextView tv_delivery_time = v.findViewById(R.id.tv_delivery_time);
             if (tv_delivery_time != null) {
-                String deliveryTime = data.get(i).getDeliveryTime() + " min";
+                String deliveryTime = data.get(i).getDeliveryTime() + " minutes";
                 tv_delivery_time.setText(deliveryTime);
             }
 

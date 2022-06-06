@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="230dp"
-    android:paddingBottom="5dp">
+    android:layout_height="230dp">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="417dp"
         android:layout_height="160dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/restaurant_image"
         android:paddingStart="10dp"
@@ -59,6 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +75,16 @@
             android:id="@+id/tv_delivery_fee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/tv_delivery_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
 
@@ -89,7 +92,6 @@
         android:id="@+id/tv_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/ratings_bkg"
         android:textSize="12sp"
