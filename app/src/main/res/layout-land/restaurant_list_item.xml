@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="480dp"
-        android:layout_height="160dp"
+        android:layout_height="135dp"
         android:layout_marginTop="10dp"
         android:contentDescription="@string/restaurant_image"
         android:paddingStart="10dp"
